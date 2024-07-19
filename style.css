@@ -1,0 +1,71 @@
+body {
+    background: black;
+    color: rgb(45, 45, 45);
+    padding: 10px;
+    font-family: arial;
+}
+#all-contents {
+  max-width: 800px;
+    margin: auto;
+}
+
+/* navigation menu */
+nav {
+    background: rgb(235, 250, 25);
+    margin: 0 auto;
+    margin-bottom: 20px;
+    display: flex;
+    padding: 10px;
+    border-radius:20px 20px;
+    
+}
+h1 {
+    display: flex;
+    align-items: center;
+    color: black;
+    flex: 1;
+    margin: 0;
+}
+#nav-ul {
+    list-style-image: none;
+}
+.nav-li {
+    display: inline-block;
+    padding: 0 10px;
+}
+a {
+    text-decoration: none;
+    color: black;
+}
+
+/* main container area beneath menu */
+main {
+    background: white;
+    display: flex;
+    border-radius: 20px 20px;
+}
+.sidebar {
+    margin-right: 25px;
+    padding: 10px;
+    
+}
+.sidebar-img {
+    width: 300px;
+    
+    
+}
+.content {
+    flex: 1;
+    padding: 15px;
+    font-family: Arial;
+}
+
+/* portfolio styles */
+#interests {
+    border: 4px silver ridge;
+    border-radius: 8px 8px;
+    padding: 8px;
+}
+h2, h3 {
+    margin: 0px;
+}
