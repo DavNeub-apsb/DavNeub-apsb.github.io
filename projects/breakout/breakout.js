@@ -557,4 +557,3 @@ function gameOver(){
     add(txt);
     mouseClickMethod(playAgain);
 }
-main();
