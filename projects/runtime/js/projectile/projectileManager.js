@@ -22,7 +22,7 @@
             
             // TODO : get from settings JSON //
             projectile.volatility = 10;
-            projectile.velocityMax = 10;
+            projectile.velocityMax = 6;
             
             projectile.handleCollision = function (impact) {
                 // TODO : Consider if particles are necessary here //
@@ -68,7 +68,7 @@
                 //console.log(projectile.rotation);
                 
                 degrees = emitter.rotation;
-                projectile.velocityX = 10; //Math.cos(physikz.degreesToRadians(degrees)) * (projectile.velocityMax + emitter.velocityX || 0);
+                projectile.velocityX = 10;  //Math.cos(physikz.degreesToRadians(degrees)) * (projectile.velocityMax + emitter.velocityX || 0);
                 projectile.velocityY = 0; //Math.sin(physikz.degreesToRadians(degrees)) * (projectile.velocityMax + emitter.velocityY || 0);
                 projectile.rotationalVelocity = 0;
                 
