@@ -87,19 +87,31 @@ var background = function (window) {
             background.addChild(groundFill);
 
             // TODO 4: Part 1 - Add buildings!     Q: This is before TODO 4 for a reason! Why?
-            for (var i = 0; i < 10; ++i) {
+            for (var i = 0; i < 21; ++i) {
                 var buildingHeight = Math.random()*350;
                 if (buildingHeight< 50){
                     buildingHeight = 225;
                 }
-                var newColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
-                var building = draw.rect(75, buildingHeight, newColor , "grey", 1);
-                building.x = 205 * i;
+                
+                var building = draw.rect(75, buildingHeight, "black" , "grey", 1);
+                building.x = 100 * i;
                 building.y = groundY - buildingHeight;
                 background.addChild(building);
                 buildings.push(building);
               }
             
+              for (var i = 0; i < 14; ++i) {
+                var buildingHeight = Math.random()*350;
+                if (buildingHeight< 50){
+                    buildingHeight = 225;
+                }
+                
+                var building = draw.rect(75, buildingHeight, "grey" , "white", 1);
+                building.x = 150 * i;
+                building.y = groundY - buildingHeight;
+                background.addChild(building);
+                buildingsTwo.push(building);
+              }
             // TODO 3: Part 1 - Add a tree
             tree = draw.bitmap("img/tree.png");
             tree.x = 500;
@@ -109,7 +121,7 @@ var background = function (window) {
         } // end of render function - DO NOT DELETE
         var tree;
         var buildings = [];
-        
+        var buildingsTwo = [];
         // Perform background animation
         // called on each timer "tick" - 60 times per second
         function update() {
@@ -129,14 +141,21 @@ var background = function (window) {
             // TODO 4: Part 2 - Parallax
             for (var i = 0; i < buildings.length; i++) {
                 var eachElement = buildings[i];
-                eachElement.x = eachElement.x - 1;
+                eachElement.x = eachElement.x - .5;
                 if (eachElement.x <-200){
                     eachElement.x = canvasWidth;
                 }
                 // code to do something with each element
               }
 
-            
+              for (var i = 0; i < buildingsTwo.length; i++) {
+                var eachElement = buildingsTwo[i];
+                eachElement.x = eachElement.x - 1.5;
+                if (eachElement.x <-200){
+                    eachElement.x = canvasWidth;
+                }
+                // code to do something with each element
+              }
         } // end of update function - DO NOT DELETE
         
         
