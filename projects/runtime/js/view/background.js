@@ -51,7 +51,7 @@ var background = function (window) {
               }
             
 
-            for(var i = 0; i <200;i++){
+            for(var i = 0; i <250;i++){
                 var diameter = getRandomArbitrary(2,6);
                 var circle = draw.circle(diameter, "white", "LightGray", 2);
                 circle.x = canvasWidth * Math.random();
