@@ -1,97 +1,87 @@
 body {
-    background: black;
+    background-image:url("https://previews.123rf.com/images/sergiobarrios/sergiobarrios2004/sergiobarrios200400003/143790640-metallic-background-with-texture-detail-of-a-metal-texture-with-shapes-high-strength-steel.jpg");
+    
+    font-family:'Trebuchet MS';
     color: rgb(45, 45, 45);
     padding: 10px;
-    font-family: arial;
+    font-family: Arial, sans-serif;
 }
+
 #all-contents {
-  max-width: 800px;
+    max-width: 1500px;
     margin: auto;
 }
 
+#name{
+    font-family:'Trebuchet MS';
+    font-size:35px;
+}
+#title {
+    
+    font-size:40px;
+}
 /* navigation menu */
 nav {
-    background: rgb(235, 250, 25);
+    background: black;
     margin: 0 auto;
-    margin-bottom: 20px;
     display: flex;
     padding: 10px;
-    border-radius:20px 20px;
-    
 }
+
 h1 {
     display: flex;
     align-items: center;
-    color: black;
+    color: white;
     flex: 1;
     margin: 0;
 }
+
 #nav-ul {
-    list-style-image: none;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
 }
+
 .nav-li {
     display: inline-block;
     padding: 0 10px;
 }
+
 a {
     text-decoration: none;
-    color: black;
+    color: #fff;
 }
 
 /* main container area beneath menu */
 main {
-    background: white;
+    background: #fcf523;
     display: flex;
-    border-radius: 20px 20px;
+    margin-top: 20px;
 }
+
 .sidebar {
     margin-right: 25px;
     padding: 10px;
-    
 }
+
 .sidebar-img {
-    width: 300px;
-    
-    
+    width: 500px;
 }
+
+
 .content {
     flex: 1;
     padding: 15px;
-    font-family: Arial;
 }
 
-/* portfolio styles */
+/* interests section styles */
 #interests {
     border: 4px silver ridge;
-    border-radius: 8px 8px;
     padding: 8px;
+    margin-top: 20px;
 }
+
 h2, h3 {
     margin: 0px;
-}
- /* portfolio styles */
- .content h1 {
-    color: black;
-}
-
-#portfolio {
-    list-style-type: circle;
-    padding-left: 10px;
-    
-}
-
-#portfolio li {
-    background: #fff;
-    padding: 10px;
-    border-radius: 10px;
-    margin-bottom: 10px;
-}
-
-#portfolio li:hover {
-    background: #eee;
-}
-
-#portfolio a {
-    text-decoration: none;
-    color: #454545;
 }
