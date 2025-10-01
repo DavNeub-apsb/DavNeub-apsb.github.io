@@ -7,12 +7,21 @@ body {
     font-family: Arial, sans-serif;
 }
 
+
+#links:visited {
+    font-family:'Trebuchet MS';
+    color: black;
+    font-size:25px;
+}
+
+
+
 #all-contents {
-    max-width: 1500px;
+    max-width: 1550px;
     margin: auto;
 }
 
-#name{
+h2 {
     font-family:'Trebuchet MS';
     font-size:35px;
 }
@@ -66,7 +75,7 @@ main {
 }
 
 .sidebar-img {
-    width: 500px;
+    width:500px;
 }
 
 
