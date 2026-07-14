@@ -59,7 +59,7 @@ h1 {
 
 a {
     text-decoration: none;
-    color: #fff;
+    color: white;
 }
 
 /* main container area beneath menu */
@@ -93,4 +93,9 @@ main {
 
 h2, h3 {
     margin: 0px;
+}
+
+#portfolio a{
+    color: darkorchid;
+    
 }
