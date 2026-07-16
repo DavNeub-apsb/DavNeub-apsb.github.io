@@ -2,6 +2,7 @@
   width: 20px;
   height: 20px;
   position: absolute;
+  margin-left: 75px;
 }
 
 body > div {
@@ -25,4 +26,8 @@ button {
 
 #reset {
   background: red;
+}
+
+#invert {
+  background: blue;
 }
