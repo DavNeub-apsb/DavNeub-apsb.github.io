@@ -75,21 +75,40 @@ main {
 }
 
 .sidebar-img {
-    width:500px;
+    width:315px;
 }
 
+#rightbar {
+    margin-left:250px;
+}
 
-.content {
-    flex: 1;
+.contents {
     padding: 15px;
+    
 }
 
+.rightbar-img {
+    margin-left:200px;
+    margin-top:-300px;
+    height:250px;
+}
 /* interests section styles */
 #interests {
-    border: 4px silver ridge;
+    
     padding: 8px;
     margin-top: 20px;
+    max-width:200px;
+    text-align:center;
 }
+
+.intlist {
+    list-style-type: none;
+    list-style-position: outside;
+}
+
+.intlist li{
+    margin-left:-35px;
+   
 
 h2, h3 {
     margin: 0px;
@@ -97,5 +116,4 @@ h2, h3 {
 
 #portfolio a{
     color: darkorchid;
-    
 }
