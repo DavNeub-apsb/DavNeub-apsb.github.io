@@ -1,0 +1,109 @@
+body {
+    background-image:url("tiger stad.png");
+    background-position-y:-250px;
+    background-size:cover;
+    background-repeat:no-repeat;
+    font-family:'Trebuchet MS';
+    color: black;
+    padding: 10px;
+    font-family: Arial, sans-serif;
+}
+
+#title {
+    background-color:#f6d251;
+    padding:5px 10px;
+    border-radius:60px;
+    width:fit-content;
+    margin:auto;
+    margin-right:800px;
+}
+
+
+#links:visited {
+    font-family:'Trebuchet MS';
+    color: black;
+    font-size:25px;
+}
+
+#all-contents {
+    min-width:1500px;
+    max-width:max-content;
+    margin: auto;
+}
+
+h2 {
+    font-family:'Trebuchet MS';
+    font-size:35px;
+    background-color:#f6d251;
+    color:black;
+    padding:5px 10px;
+    border-radius:60px;
+    width:fit-content;
+    margin:auto;
+    margin-top:-10px;
+}
+
+/* navigation menu */
+nav {
+    
+    margin: auto;
+    display: flex;
+    padding: 10px;
+}
+
+h1 {
+    display: flex;
+    align-items: center;
+    color: black;
+    flex: 1;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+#nav-ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 10px;
+    
+}
+
+#nav-ul a{
+    color:black; 
+    font-weight:bold;
+}
+.nav-li {
+    display: inline-block;
+    padding:5px 10px;
+    background-color:#f6d251;
+    margin-left:20px;
+    border-radius:60px;
+}
+
+#nav-ul a:hover{
+    color:white;
+    box-shadow:0 0 24px 12px #f6d251;
+}
+
+#portfolio a{
+    color: black;
+}
+
+#portfolio a:hover{
+    color: white;
+}
+
+
+#contents {
+    max-width: 500px;
+    text-align:center;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
