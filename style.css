@@ -1,155 +1,222 @@
-body {
-    background-image: url("https://storage.googleapis.com/lsusports-net-prod/2020/03/007343c0-lsu_zoom_tigerstadium2-1024x576.jpg");
-    background-size:cover;
-    background-repeat:no-repeat;
-    font-family:'Trebuchet MS';
-    color: black;
-    padding: 10px;
-    font-family: Arial, sans-serif;
+*{
+    box-sizing:border-box;
 }
 
-
-
-#links:visited {
-    font-family:'Trebuchet MS';
-    color: black;
-    font-size:25px;
+body{
+    margin:0;
+    background:#947706;
+    color:#222;
+    font-family:"helvetica neue", Arial, sans-serif;
 }
 
-#all-contents {
-
-    max-width: 1550px;
-    margin: auto;
+#all-contents{
+    max-width:1500px;
+    min-height:100vh;
+    margin:0 auto;
+    padding: 32px 40px;
 }
-
-h2 {
-    font-family:'Trebuchet MS';
-    font-size:35px;
-    
-}
-
-#job {
-    font-size:24px;
-    line-height:40%
-}
-
-#name {
-    font-size:58px;
-    line-height:40%
-}
-#title {
-    
-    font-size:40px;
-}
-/* navigation menu */
-nav {
-    
-    margin: 0 auto;
-    display: flex;
-    padding: 10px;
-}
-
-h1 {
-    display: flex;
-    align-items: center;
-    color: white;
-    flex: 1;
-    margin: 0;
-}
-
-a {
-    text-decoration: none;
-    color: white;
-}
-
-#nav-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 10px;
-    
-}
-
-#nav-ul a{
-    color:black; 
-    font-weight:bold;
-}
-.nav-li {
-    display: inline-block;
-    padding:5px 10px;
-    background-color:#f6d251;
-    margin-left:20px;
-    border-radius:60px;
-}
-
-#nav-ul a:hover{
-    color:white;
-    box-shadow:0 0 24px 12px #f6d251;
-}
-
-/* main container area beneath menu */
 main {
-    background: #f6d251;
-    border-radius:10px;
-    display: flex;
-    margin-top: 20px;
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) minmax(420px, 1.6fr);
+  align-items: center;
+  min-height: calc(100vh - 160px);
+  gap: clamp(32px, 5vw, 80px);
 }
 
 .sidebar {
-    margin-right: 25px;
-    padding: 10px;
-    max-width:500px;
+  width: 100%;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+h2 {
+  margin: 0;
+  font-size: clamp(4rem, 10vw, 7rem);
+  line-height: 0.9;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  color: #000;
+}
+
+.content > p {
+  margin: 0;
+  color: #999;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  line-height: 1.4;
+}
+
+#interests {
+  margin-top: 32px;
+  width: 100%;
+}
+
+#interests h3 {
+  margin: 0 0 12px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #aaa;
+}
+
+#interests ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+#interests li {
+  color: #555;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 10px 20px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 100px;
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease;
+  cursor: default;
+}
+
+#interests li:hover {
+  background: #000;
+  color: #fff;
+  border-color: #000;
+  transform: translateY(-2px);
 }
 
 .sidebar-img {
-    border-radius:10px;
-    width:500px;
+  width: 100%;
+  max-width: 760px;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  display: block;
+  border-radius: 16px;
+  filter: grayscale(100%);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  transition:
+    filter 0.4s ease,
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
 }
 
-#rightbar {
-    margin-left:250px;
-    max-width:500px;
+.sidebar-img:hover {
+  filter: grayscale(0%);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
 }
 
-.contents {
-    padding-top:60px;
-    max-width: 500px;
-    text-align:center;
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 48px;
+  padding: 16px 24px;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
 }
 
-.rightbar-img {
-    margin-left:350px;
-    margin-top:-400px;
-    height:300px;
-}
-/* interests section styles */
-#interests {
-    padding: 8px;
-    margin-top: 20px;
-    max-width:500px;
-    text-align:center;
-    font-size:28px;
-    line-height:80%
+nav h1 {
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #000;
 }
 
-.intlist {
-    list-style-type: none;
-    list-style-position: outside;
-    font-size:20px;
+#nav-ul {
+  list-style: none;
+  display: flex;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
 }
 
-.intlist li{
-    margin-left:-35px;
-   
-}
-h2, h3 {
-    margin: 0px;
-}
-
-#portfolio a{
-    color: black;
-}
-
-#portfolio a:hover{
-    color: white;
+.nav-li a {
+  color: #666;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 6px 14px;
+  border-radius: 8px;
+  transition:
+    background 0.25s ease,
+    color 0.25s ease;
 }
 
+.nav-li a:hover {
+  background: #000;
+  color: #fff;
+}
+
+/* Portfolio styles */
+.portcontent {
+  display: inline-block;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  color:black;
+}
+
+#portfolio {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: inline-block;
+  flex-direction: column;
+  gap: 8px;
+}
+
+#portfolio li {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+#portfolio a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-decoration: none;
+  color: #444;
+  padding: 16px 20px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+
+#portfolio a:hover {
+  background: #000;
+  color: #fff;
+  transform: translateX(4px);
+}
+
+#portfolio a::after {
+  content: "->";
+  font-size: 0.85rem;
+  opacity: 0.4;
+  transition: opacity 0.25s ease;
+  white-space: nowrap;
+}
+
+#portfolio a:hover::after {
+  opacity: 1;
+}

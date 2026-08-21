@@ -1,0 +1,155 @@
+body {
+    background-image: url("https://storage.googleapis.com/lsusports-net-prod/2020/03/007343c0-lsu_zoom_tigerstadium2-1024x576.jpg");
+    background-size:cover;
+    background-repeat:no-repeat;
+    font-family:'Trebuchet MS';
+    color: black;
+    padding: 10px;
+    font-family: Arial, sans-serif;
+}
+
+
+
+#links:visited {
+    font-family:'Trebuchet MS';
+    color: black;
+    font-size:25px;
+}
+
+#all-contents {
+
+    max-width: 1550px;
+    margin: auto;
+}
+
+h2 {
+    font-family:'Trebuchet MS';
+    font-size:35px;
+    
+}
+
+#job {
+    font-size:24px;
+    line-height:40%
+}
+
+#name {
+    font-size:58px;
+    line-height:40%
+}
+#title {
+    
+    font-size:40px;
+}
+/* navigation menu */
+nav {
+    
+    margin: 0 auto;
+    display: flex;
+    padding: 10px;
+}
+
+h1 {
+    display: flex;
+    align-items: center;
+    color: white;
+    flex: 1;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+#nav-ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 10px;
+    
+}
+
+#nav-ul a{
+    color:black; 
+    font-weight:bold;
+}
+.nav-li {
+    display: inline-block;
+    padding:5px 10px;
+    background-color:#f6d251;
+    margin-left:20px;
+    border-radius:60px;
+}
+
+#nav-ul a:hover{
+    color:white;
+    box-shadow:0 0 24px 12px #f6d251;
+}
+
+/* main container area beneath menu */
+main {
+    background: #f6d251;
+    border-radius:10px;
+    display: flex;
+    margin-top: 20px;
+}
+
+.sidebar {
+    margin-right: 25px;
+    padding: 10px;
+    max-width:500px;
+}
+
+.sidebar-img {
+    border-radius:10px;
+    width:500px;
+}
+
+#rightbar {
+    margin-left:250px;
+    max-width:500px;
+}
+
+.contents {
+    padding-top:60px;
+    max-width: 500px;
+    text-align:center;
+}
+
+.rightbar-img {
+    margin-left:350px;
+    margin-top:-400px;
+    height:300px;
+}
+/* interests section styles */
+#interests {
+    padding: 8px;
+    margin-top: 20px;
+    max-width:500px;
+    text-align:center;
+    font-size:28px;
+    line-height:80%
+}
+
+.intlist {
+    list-style-type: none;
+    list-style-position: outside;
+    font-size:20px;
+}
+
+.intlist li{
+    margin-left:-35px;
+   
+}
+h2, h3 {
+    margin: 0px;
+}
+
+#portfolio a{
+    color: black;
+}
+
+#portfolio a:hover{
+    color: white;
+}
+

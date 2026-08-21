@@ -19,8 +19,14 @@ function main() {
     return;
   }
 
+  if (player.winConditionMet) {
+    winGame();
+    return;
+  }
+
   drawPlatforms();
   drawFakePlatforms();
+  drawBadPlatforms();
   drawProjectiles();
   drawCannons();
   drawCollectables();
@@ -32,6 +38,7 @@ function main() {
   collision(); //checks if the player will collide with something in this frame
   keyboardControlActions(); //keyboard controls.
   projectileCollision(); //checks if the player is getting hit by a projectile in the next frame
+  badPlatformCollision(); //checks if the player is touching a bad platform
   collectablesCollide(); //checks if player has touched a collectable
 
   animate(); //this changes halle's picture to the next frame so it looks animated.
@@ -363,6 +370,23 @@ function projectileCollision() {
   }
 }
 
+function badPlatformCollision() {
+  if (currentAnimationType === animationTypes.frontDeath) {
+    return;
+  }
+  for (var i = 0; i < badPlatforms.length; i++) {
+    if (
+      player.x + hitBoxWidth > badPlatforms[i].x &&
+      player.x < badPlatforms[i].x + badPlatforms[i].width &&
+      player.y < badPlatforms[i].y + badPlatforms[i].height &&
+      player.y + hitBoxHeight > badPlatforms[i].y
+    ) {
+      currentAnimationType = animationTypes.frontDeath;
+      frameIndex = 0;
+    }
+  }
+}
+
 function deathOfPlayer() {
   ctx.fillStyle = "grey";
   ctx.fillRect(
@@ -420,15 +444,29 @@ function drawPlatforms() {
     // Check if platform should move horizontally
     if (platforms[i].minX !== null && platforms[i].maxX !== null) {
       // Move platform based on speed and direction
-      platforms[i].x += platforms[i].speed * platforms[i].direction;
+      platforms[i].x += platforms[i].speedX * platforms[i].directionX;
 
       // Reverse direction if platform reaches minX or maxX bounds
       if (platforms[i].x < platforms[i].minX) {
         platforms[i].x = platforms[i].minX;
-        platforms[i].direction *= -1; // Change direction to right
+        platforms[i].directionX *= -1; // Change direction to right
       } else if (platforms[i].x > platforms[i].maxX) {
         platforms[i].x = platforms[i].maxX;
-        platforms[i].direction *= -1; // Change direction to left
+        platforms[i].directionX *= -1; // Change direction to left
+      }
+    }
+
+    // Check if platform should move vertically
+    if (platforms[i].minY !== null && platforms[i].maxY !== null) {
+      // Move platform based on speed and direction
+      platforms[i].y += platforms[i].speedY * platforms[i].directionY;
+      // Reverse direction if platform reaches minY or maxY bounds
+      if (platforms[i].y < platforms[i].minY) {
+        platforms[i].y = platforms[i].minY;
+        platforms[i].directionY *= -1; // Change direction to down
+      } else if (platforms[i].y > platforms[i].maxY) {
+        platforms[i].y = platforms[i].maxY;
+        platforms[i].directionY *= -1; // Change direction to up
       }
     }
 
@@ -447,6 +485,14 @@ function drawFakePlatforms() {
   }
 }
 
+function drawBadPlatforms() {
+  for (var i = 0; i < badPlatforms.length; i++) {
+    const { color, x, y, width, height } = badPlatforms[i];
+    ctx.fillStyle = color;
+    ctx.fillRect(x, y, width, height);
+  }
+}
+
 function toggleGrid() {
   shouldDrawGrid = true;
 }
@@ -459,6 +505,7 @@ function makeGrid() {
     }
     // add text indicating x value at top of game
     ctx.font = "125% serif";
+    ctx.fillStyle = "black";
     ctx.fillText(
       i, // text
       i - 15, // x location
@@ -509,6 +556,21 @@ function drawCannons() {
       );
     } else {
       cannons[i].projectileCountdown = cannons[i].projectileCountdown + 1;
+    }
+
+    // move cannon if minX and maxX are set
+    if (cannons[i].minX !== null && cannons[i].maxX !== null) {
+      cannons[i].x += cannons[i].speedX;
+      if (cannons[i].x < cannons[i].minX || cannons[i].x > cannons[i].maxX) {
+        cannons[i].speedX *= -1;
+      }
+    }
+    // move cannon if minY and maxY are set
+    if (cannons[i].minY !== null && cannons[i].maxY !== null) {
+      cannons[i].y += cannons[i].speedY;
+      if (cannons[i].y < cannons[i].minY || cannons[i].y > cannons[i].maxY) {
+        cannons[i].speedY *= -1;
+      }
     }
 
     ctx.fillStyle = "grey";
@@ -593,7 +655,50 @@ function collectablesCollide() {
       collectables[i].y + collectableHeight > player.y
     ) {
       collectables[i].collected = true;
+      checkForWin();
     }
+  }
+}
+
+function checkForWin() {
+  if (collectables.length === 0) {
+    return; // If there are no collectables, we can't win
+  }
+  for (var i = 0; i < collectables.length; i++) {
+    if (collectables[i].collected !== true) {
+      return; // If any collectable is not collected, we can't win yet
+    }
+  }
+  player.winConditionMet = true; // Set win condition to true
+}
+
+function winGame() {
+  // If we reach this point, all collectables are collected
+  ctx.fillStyle = "grey";
+  ctx.fillRect(
+    canvas.width / 4,
+    canvas.height / 6,
+    canvas.width / 2,
+    canvas.height / 2
+  );
+  ctx.fillStyle = "white";
+  ctx.font = "800% serif";
+  ctx.fillText(
+    "You Win!",
+    canvas.width / 4,
+    canvas.height / 6 + canvas.height / 5,
+    (canvas.width / 16) * 14
+  );
+  ctx.font = "500% serif";
+  ctx.fillText(
+    "Hit any key to restart",
+    canvas.width / 4,
+    canvas.height / 6 + canvas.height / 3,
+    (canvas.width / 16) * 14
+  );
+  if (keyPress.any) {
+    keyPress.any = false;
+    window.location.reload();
   }
 }
 
@@ -605,7 +710,10 @@ function createPlatform(
   color = "grey",
   minX = null,
   maxX = null,
-  speed = 1
+  speedX = 1,
+  minY = null,
+  maxY = null,
+  speedY = 1
 ) {
   platforms.push({
     x,
@@ -615,8 +723,12 @@ function createPlatform(
     color,
     minX,
     maxX,
-    speed,
-    direction: 1, // 1 for right, -1 for left
+    speedX,
+    minY,
+    maxY,
+    speedY,
+    directionX: 1, // 1 for right, -1 for left
+    directionY: 1, // 1 for down, -1 for up
   });
 }
 
@@ -630,12 +742,25 @@ function createFakePlatform(x, y, width, height, color = "grey") {
   });
 }
 
+function createBadPlatform(x, y, width, height, color = "red") {
+  badPlatforms.push({
+    x,
+    y,
+    width,
+    height,
+    color,
+  });
+}
+
 function createCannon(
   wallLocation,
   position,
   timeBetweenShots,
   width = defaultProjectileWidth,
-  height = defaultProjectileHeight
+  height = defaultProjectileHeight,
+  minPos = null,
+  maxPos = null,
+  speed = 1
 ) {
   if (wallLocation === "top") {
     cannons.push({
@@ -647,6 +772,12 @@ function createCannon(
       timeBetweenShots: timeBetweenShots / (1000 / frameRate),
       projectileWidth: width,
       projectileHeight: height,
+      minX: minPos,
+      maxX: maxPos,
+      speedX: speed,
+      minY: null,
+      maxY: null,
+      speedY: 0,
     });
   } else if (wallLocation === "bottom") {
     cannons.push({
@@ -658,6 +789,12 @@ function createCannon(
       timeBetweenShots: timeBetweenShots / (1000 / frameRate),
       projectileWidth: width,
       projectileHeight: height,
+      minX: minPos,
+      maxX: maxPos,
+      speedX: speed,
+      minY: null,
+      maxY: null,
+      speedY: 0,
     });
   } else if (wallLocation === "left") {
     cannons.push({
@@ -669,6 +806,12 @@ function createCannon(
       timeBetweenShots: timeBetweenShots / (1000 / frameRate),
       projectileWidth: width,
       projectileHeight: height,
+      minX: null,
+      maxX: null,
+      speedX: 0,
+      minY: minPos,
+      maxY: maxPos,
+      speedY: speed,
     });
   } else if (wallLocation === "right") {
     cannons.push({
@@ -680,6 +823,12 @@ function createCannon(
       timeBetweenShots: timeBetweenShots / (1000 / frameRate),
       projectileWidth: width,
       projectileHeight: height,
+      minX: null,
+      maxX: null,
+      speedX: 0,
+      minY: minPos,
+      maxY: maxPos,
+      speedY: speed,
     });
   }
 }
