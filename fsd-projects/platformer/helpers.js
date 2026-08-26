@@ -388,25 +388,25 @@ function badPlatformCollision() {
 }
 
 function deathOfPlayer() {
-  ctx.fillStyle = "grey";
+  ctx.fillStyle = "black";
   ctx.fillRect(
     canvas.width / 4,
     canvas.height / 6,
     canvas.width / 2,
     canvas.height / 2
   );
-  ctx.fillStyle = "black";
-  ctx.font = "800% serif";
+  ctx.fillStyle = "#07ed39";
+  ctx.font = "700% impact";
   ctx.fillText(
-    "You are dead",
-    canvas.width / 4,
+    "You Are Dead",
+    canvas.width / 4 + 40,
     canvas.height / 6 + canvas.height / 5,
     (canvas.width / 16) * 14
   );
-  ctx.font = "500% serif";
+  ctx.font = "400% impact";
   ctx.fillText(
     "Hit any key to restart",
-    canvas.width / 4,
+    canvas.width / 4 + 80,
     canvas.height / 6 + canvas.height / 3,
     (canvas.width / 16) * 14
   );
@@ -505,7 +505,7 @@ function makeGrid() {
     }
     // add text indicating x value at top of game
     ctx.font = "125% serif";
-    ctx.fillStyle = "black";
+    ctx.fillStyle = "grey";
     ctx.fillText(
       i, // text
       i - 15, // x location
@@ -519,7 +519,7 @@ function makeGrid() {
       createFakePlatform(45, i - 1, canvas.width, 1);
     }
     // add text indicating y value at left side of game
-    ctx.font = "125% serif";
+    ctx.font = "125% grey";
     ctx.fillText(
       i, // text
       10, // x location
@@ -674,25 +674,25 @@ function checkForWin() {
 
 function winGame() {
   // If we reach this point, all collectables are collected
-  ctx.fillStyle = "grey";
+  ctx.fillStyle = "black";
   ctx.fillRect(
     canvas.width / 4,
     canvas.height / 6,
     canvas.width / 2,
     canvas.height / 2
   );
-  ctx.fillStyle = "white";
-  ctx.font = "800% serif";
+  ctx.fillStyle = "#07ed39";
+  ctx.font = "800% impact";
   ctx.fillText(
     "You Win!",
-    canvas.width / 4,
+    canvas.width / 4 + 60,
     canvas.height / 6 + canvas.height / 5,
     (canvas.width / 16) * 14
   );
-  ctx.font = "500% serif";
+  ctx.font = "400% impact";
   ctx.fillText(
     "Hit any key to restart",
-    canvas.width / 4,
+    canvas.width / 4 + 80,
     canvas.height / 6 + canvas.height / 3,
     (canvas.width / 16) * 14
   );
@@ -754,18 +754,20 @@ function createBadPlatform(x, y, width, height, color = "red") {
 
 function createCannon(
   wallLocation,
-  position,
+  x,
+  y,
   timeBetweenShots,
-  width = defaultProjectileWidth,
-  height = defaultProjectileHeight,
   minPos = null,
   maxPos = null,
-  speed = 1
+  speed = 1,
+  width = defaultProjectileWidth,
+  height = defaultProjectileHeight,
+  
 ) {
   if (wallLocation === "top") {
     cannons.push({
-      x: position,
-      y: cannonHeight,
+      x: cannonWidth/2 + x,
+      y: cannonHeight + y,
       rotation: 180,
       projectileCountdown: 0,
       location: wallLocation,
@@ -781,8 +783,8 @@ function createCannon(
     });
   } else if (wallLocation === "bottom") {
     cannons.push({
-      x: position,
-      y: canvas.height - cannonHeight,
+      x: x - cannonWidth/2,
+      y: y - cannonHeight,
       rotation: 0,
       projectileCountdown: 0,
       location: wallLocation,
@@ -798,8 +800,8 @@ function createCannon(
     });
   } else if (wallLocation === "left") {
     cannons.push({
-      x: cannonHeight,
-      y: position,
+      x: cannonHeight + x,
+      y: y - cannonWidth/2,
       rotation: 90,
       projectileCountdown: 0,
       location: wallLocation,
@@ -815,8 +817,8 @@ function createCannon(
     });
   } else if (wallLocation === "right") {
     cannons.push({
-      x: canvas.width - cannonHeight,
-      y: position,
+      x: x - cannonHeight,
+      y: y + cannonWidth/2,
       rotation: 270,
       projectileCountdown: 0,
       location: wallLocation,
@@ -883,7 +885,7 @@ function createProjectile(wallLocation, x, y, width, height) {
     projectiles.push({
       x: x + 47,
       y: y + 50 + height / 2,
-      speedX: 0,
+      speedX: 0, 
       speedY: -projectileSpeed,
       width,
       height,

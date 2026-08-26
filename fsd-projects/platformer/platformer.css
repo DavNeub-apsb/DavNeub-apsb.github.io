@@ -1,6 +1,6 @@
 body {
   margin: 0px;
-  background-color: #202737;
+  background-image: url("https://cdn.mos.cms.futurecdn.net/HuGGeENt6kGyixe3hT9tnY.jpg");
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -8,10 +8,13 @@ body {
 }
 
 canvas {
-  background-color: lightblue;
+  background-color:grey;
+  background-image:url(earth-back.png);
+  background-repeat:no-repeat;
+  background-size:cover;
   margin: 20px;
   border-radius: 15px;
-  border: 5px solid rgba(118, 0, 233, 0.375);
+  border: 5px solid #07ed39;
 }
 
 img {
